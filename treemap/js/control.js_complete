@@ -5,7 +5,7 @@ $( document ).ready(function() {
 	d3.csv("http://bricbracs.com/d3/fish.csv", function(csv_data){
 		// Add, remove or change the key values to change the hierarchy. 
 		var nested_data = d3.nest()
-			.key(function(d)  { return d.NAME; })
+			.key(function(d)  { return d.NUMBER; })
 			.key(function(d)  { return d.SPECIES; })
 			.key(function(d)  { return d.GENOTYPE; })
 			.entries(csv_data);
@@ -18,7 +18,7 @@ $( document ).ready(function() {
 		root.values = nested_data;
 
 		// Change the key names and children values from .next and add values for a chosen column to define the size of the blocks
-		root = reSortRoot(root,"NUMBER");
+		root = reSortRoot(root,"NAME");
 
 		// DEBUG
 		// $("#rawdata").html(JSON.stringify(root));
